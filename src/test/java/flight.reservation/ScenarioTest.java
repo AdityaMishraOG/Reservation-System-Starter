@@ -167,7 +167,7 @@ public class ScenarioTest {
                 ScheduledFlight scheduledFlight = schedule.searchScheduledFlight(flight.getNumber());
                 FlightOrder order = customer.createOrder(Arrays.asList("Max"), Arrays.asList(scheduledFlight), 100);
                 order.setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
-assertThrows(IllegalStateException.class, () -> order.processOrder());
+                assertThrows(IllegalStateException.class, () -> order.processOrder());
                 assertFalse(order.isClosed());
             }
         }
@@ -187,7 +187,7 @@ assertThrows(IllegalStateException.class, () -> order.processOrder());
                 ScheduledFlight scheduledFlight = schedule.searchScheduledFlight(flight.getNumber());
                 FlightOrder order = customer.createOrder(Arrays.asList("Max"), Arrays.asList(scheduledFlight), 100);
                 order.setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
-assertThrows(IllegalStateException.class, () -> order.processOrder());
+                assertThrows(IllegalStateException.class, () -> order.processOrder());
                 assertFalse(order.isClosed());
             }
         }
