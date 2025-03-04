@@ -8,6 +8,7 @@ import flight.reservation.flight.ScheduledFlight;
 import flight.reservation.payment.CreditCard;
 import flight.reservation.payment.PaymentStrategy;
 
+
 public class FlightOrder extends Order {
     private final List<ScheduledFlight> flights;
     static List<String> noFlyList = Arrays.asList("Peter", "Johannes");
@@ -45,54 +46,54 @@ public class FlightOrder extends Order {
         return valid;
     }
 
-    /**
-     * Optionally keep this method if your test calls it directly.
-     * Internally, it sets the PaymentStrategy, then calls processOrder().
-     */
-    public boolean processOrderWithCreditCardDetail(String number, Date expirationDate, String cvv)
-            throws IllegalStateException {
-        if (isClosed()) {
-            return true;
-        }
-        // Create and validate card
-        CreditCard creditCard = new CreditCard(number, expirationDate, cvv);
-        if (!cardIsPresentAndValid(creditCard)) {
-            throw new IllegalStateException("Payment information is not set or not valid.");
-        }
-        // set the strategy, then do the pay
-        setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
-        return processOrder();
-    }
+    // /**
+    //  * Optionally keep this method if your test calls it directly.
+    //  * Internally, it sets the PaymentStrategy, then calls processOrder().
+    //  */
+    // public boolean processOrderWithCreditCardDetail(String number, Date expirationDate, String cvv)
+    //         throws IllegalStateException {
+    //     if (isClosed()) {
+    //         return true;
+    //     }
+    //     // Create and validate card
+    //     CreditCard creditCard = new CreditCard(number, expirationDate, cvv);
+    //     if (!cardIsPresentAndValid(creditCard)) {
+    //         throw new IllegalStateException("Payment information is not set or not valid.");
+    //     }
+    //     // set the strategy, then do the pay
+    //     setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
+    //     return processOrder();
+    // }
 
-    /**
-     * Optionally keep this method if your test calls it directly.
-     */
-    public boolean processOrderWithCreditCard(CreditCard creditCard) throws IllegalStateException {
-        if (isClosed()) {
-            return true;
-        }
-        // validate payment information
-        if (!cardIsPresentAndValid(creditCard)) {
-            throw new IllegalStateException("Payment information is not set or not valid.");
-        }
-        setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
-        return processOrder();
-    }
+    // /**
+    //  * Optionally keep this method if your test calls it directly.
+    //  */
+    // public boolean processOrderWithCreditCard(CreditCard creditCard) throws IllegalStateException {
+    //     if (isClosed()) {
+    //         return true;
+    //     }
+    //     // validate payment information
+    //     if (!cardIsPresentAndValid(creditCard)) {
+    //         throw new IllegalStateException("Payment information is not set or not valid.");
+    //     }
+    //     setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
+    //     return processOrder();
+    // }
 
-    /**
-     * Optionally keep this method if your test calls it directly.
-     */
-    public boolean processOrderWithPayPal(String email, String password) throws IllegalStateException {
-        if (isClosed()) {
-            return true;
-        }
-        // validate payment information
-        if (email == null || password == null || !email.equals(Paypal.DATA_BASE.get(password))) {
-            throw new IllegalStateException("Payment information is not set or not valid.");
-        }
-        setPaymentStrategy(new PayPalPaymentStrategy(email, password));
-        return processOrder();
-    }
+    // /**
+    //  * Optionally keep this method if your test calls it directly.
+    //  */
+    // public boolean processOrderWithPayPal(String email, String password) throws IllegalStateException {
+    //     if (isClosed()) {
+    //         return true;
+    //     }
+    //     // validate payment information
+    //     if (email == null || password == null || !email.equals(Paypal.DATA_BASE.get(password))) {
+    //         throw new IllegalStateException("Payment information is not set or not valid.");
+    //     }
+    //     setPaymentStrategy(new PayPalPaymentStrategy(email, password));
+    //     return processOrder();
+    // }
 
     /**
      * Unified method to process the order using whichever
