@@ -1,6 +1,6 @@
 package flight.reservation.plane;
 
-public class Helicopter {
+public class Helicopter implements Plane{
     private final String model;
     private final int passengerCapacity;
 
@@ -15,10 +15,12 @@ public class Helicopter {
         }
     }
 
+    @Override
     public String getModel() {
-        return model;
+        return model; 
     }
 
+    @Override
     public int getPassengerCapacity() {
         return passengerCapacity;
     }

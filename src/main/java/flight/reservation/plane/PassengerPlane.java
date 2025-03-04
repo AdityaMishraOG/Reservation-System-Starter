@@ -1,6 +1,6 @@
 package flight.reservation.plane;
 
-public class PassengerPlane {
+public class PassengerPlane implements Plane{
 
     public String model;
     public int passengerCapacity;
@@ -9,7 +9,7 @@ public class PassengerPlane {
     public PassengerPlane(String model) {
         this.model = model;
         switch (model) {
-            case "A380":
+            case "A380": 
                 passengerCapacity = 500;
                 crewCapacity = 42;
                 break;
@@ -28,6 +28,16 @@ public class PassengerPlane {
             default:
                 throw new IllegalArgumentException(String.format("Model type '%s' is not recognized", model));
         }
+    }
+
+    @Override
+    public String getModel() {
+        return model;
+    }
+
+    @Override
+    public int getPassengerCapacity() {
+        return passengerCapacity;
     }
 
 }
