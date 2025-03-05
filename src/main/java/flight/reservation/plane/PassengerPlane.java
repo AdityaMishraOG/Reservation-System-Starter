@@ -1,15 +1,19 @@
 package flight.reservation.plane;
 
-public class PassengerPlane implements Plane{
+public class PassengerPlane implements Plane {
 
     public String model;
     public int passengerCapacity;
     public int crewCapacity;
 
+    public PassengerPlane() {
+
+    }
+
     public PassengerPlane(String model) {
         this.model = model;
         switch (model) {
-            case "A380": 
+            case "A380":
                 passengerCapacity = 500;
                 crewCapacity = 42;
                 break;
@@ -39,5 +43,12 @@ public class PassengerPlane implements Plane{
     public int getPassengerCapacity() {
         return passengerCapacity;
     }
-
+    @Override
+    public int getCrewCapacity() {
+        return crewCapacity;
+    }
+    // for builder pattern
+    public void setCrewCapacity(int crewCapacity) {
+        this.crewCapacity = crewCapacity;
+    }
 }

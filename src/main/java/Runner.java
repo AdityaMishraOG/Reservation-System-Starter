@@ -23,15 +23,6 @@ public class Runner {
     );
 
     static List<Object> aircrafts = Arrays.asList(
-        
-        //     new PassengerPlane("A380"),
-        //     new PassengerPlane("A350"),
-        //     new PassengerPlane("Embraer 190"),
-        //     new PassengerPlane("Antonov AN2"),
-        //     new Helicopter("H1"),
-        //     new PassengerDrone("HypaHype")
-
-        // use PlaneFactory to create the objects
         new PlaneFactory().createPlane("PassengerPlane", "A380"),
         new PlaneFactory().createPlane("PassengerPlane", "A350"),
         new PlaneFactory().createPlane("PassengerPlane", "Embraer 190"),
